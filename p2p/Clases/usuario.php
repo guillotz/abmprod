@@ -41,6 +41,57 @@ class Usuario
 			}		
 		}
 		return false;
+	}
+	public static function MostrarUsuario($nombre,$tipo)
+	{
+		echo '<center><h3>Bienvenido: '.$nombre.'<br />Tipo User: '.$tipo.'</h3><a href="nexoadministrador.php?CERRAR">CERRAR SESION</a></center>';
+	}
+	public static function TraerUsuarios()
+	{
+		$acceso = AccesoDatos::dameUnObjetoAcceso();
+		$consulta = $acceso->RetornarConsulta
+		("SELECT * FROM usuarios");
+		$consulta->execute();
+		$usuarios = $consulta->fetchAll();
+		return $usuarios;
+	}
+	public static function EliminarUser($idUser)
+	{
+		$acceso = AccesoDatos::dameUnObjetoAcceso();
+		$consulta = $acceso->RetornarConsulta
+		("DELETE FROM usuarios WHERE id = :id");
+		$consulta->bindValue(':id',$idUser,PDO::PARAM_INT);
+		return $consulta->execute();
+	}
+	public static function CargarTablaUsuarios($usuarios)
+	{
+		$titulos = '<script src="ajax.js"></script>
+					<link rel="stylesheet" type="text/css" href="css/grillastyle.css" />
+					<h1><center>Usuarios</center></h1>
+					<div class="datagrid">
+						<table>
+		                <thead>
+		                    <tr>
+		                        <th>  Nombre </th>
+		                        <th>  Mail   </th>              
+		                        <th>  Tipo     </th>
+		                        <!--<th>  Foto   </th>-->
+		                        <th>  Accion   </th>
+		                    </tr> 
+		                </thead><tbody>';
+		$cuerpo = "";
+		foreach ($usuarios as $u)
+		{
+			$cuerpo.='<tr>
+		        		<td>'.$u["nombre"].'</td>
+		        		<td>'.$u["mail"].'</td>
+		        		<td>'.$u["tipo"].'</td>
+		        		<td>
+		        		<button id="btn_elijs"class="submit-button" onclick="EliminarUser('.$u["id"].')">Eliminar</button></td>
+		        	</tr>';
+		}
+		$fin = '</tbody></table></div>';
+		return $titulos.$cuerpo.$fin;
 	} 
 }
 ?>

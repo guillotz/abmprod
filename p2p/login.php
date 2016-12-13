@@ -1,10 +1,22 @@
-		<script src="ajax.js"></script>
-		<form onsubmit="return false" action="nexoadministrador.php" method="post">
-			<input type="text" id="nombrejs" name="nombre">Nombre
-			<input type ="password" id="passwordjs" name="password">Password
-			<input type ="submit" id="loginjs" name="login" onclick="Login()">Login
-			<input type ="checkbox" id="checkjs" name ="check" value="checked">Recordarme  
-		</form>
+		<html>
+			<head>
+				<script src="ajax.js"></script>
+				<link rel="stylesheet" type="text/css" href="css/style.css" />
+			</head>
+				<body background="Fotos/bg-img.jpg">		
+					<center>
+						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+						<form class ="form-container" onsubmit="return false" action="nexoadministrador.php" method="post">
+							Nombre o E-mail<br /><input type ="text" id="nombrejs" name="nombre"><br />
+							Password<br /><input type ="password" id="passwordjs" name="password"><br /><br />
+							<input type ="submit" class="submit-button" id="loginjs" name="login" onclick="Login()" value="Login">
+							<input type ="checkbox" id="checkjs" name ="check" value="checked">Recordarme<br /><br /> 
+							<input type ="submit" class="submit-button" id="testAdmin" name="login" onclick="TestAdmin()" value="TestAdmin">
+							<input type ="submit" class="submit-button" id="testUser" name="login" onclick="TestUser()" value="TestUser">
+						</form>
+					</center>
+				</body>
+		</html>
 
 <!--
 <script src="ajax.js"></script>

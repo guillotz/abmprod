@@ -40,30 +40,54 @@ require_once 'Clases/productos.php';
 			header ("location:index.php");
 		}
 	}
-	if (isset($_POST["descripcion"],$_POST["precio"],$_POST["cantidad"]))
+	if (isset($_POST["descripcion"],$_POST["precio"],$_POST["cantidad"],$_POST["id"]))
 	{
-		if(Productos::AgregarProducto($_POST["descripcion"],$_POST["precio"],"",$_POST["cantidad"]))
+		if($_POST["id"] == 0)
 		{
-			echo "ok";
-		}
-		else
+			if(Productos::AgregarProducto($_POST["descripcion"],$_POST["precio"],$_POST["cantidad"]))
+				{
+					$prods = Productos::TraerProductos();
+					echo Productos::CargarTablaAdmin($prods);
+				}
+			else
+				{
+					echo "no";
+				}
+		}else
 		{
-			echo "no alta";
+			if(Productos::ModificarProducto($_POST["id"],$_POST["descripcion"],$_POST["precio"],$_POST["cantidad"]))
+			{
+				$prods = Productos::TraerProductos();
+				echo Productos::CargarTablaAdmin($prods);
+			}
+			else
+			{
+				echo "no";
+			}
 		}
+		
 	}
 	if(isset($_POST["baja"]))
 	{
 		if(Productos::EliminarProducto($_POST["baja"]))
 		{
-			echo "ok";
+				$prods = Productos::TraerProductos();
+				echo Productos::CargarTablaAdmin($prods);
 		}
 		else
 		{
-			echo "no ok";
+			echo "no";
 		}
 	}
 	if(isset($_POST["cant"],$_POST["pre"],$_POST["id"]))
 	{
 		echo "ok";
+	}
+	if(isset($_POST["bajaUser"]))
+	{
+		if(Usuario::EliminarUser($_POST["bajaUser"]))
+		{
+			echo "bajaOk";
+		}
 	}
 ?>

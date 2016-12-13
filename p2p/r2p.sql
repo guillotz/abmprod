@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2016 a las 13:41:55
+-- Tiempo de generación: 12-12-2016 a las 01:10:17
 -- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 5.6.28
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,14 +39,12 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `descripcion`, `precio`, `foto`, `cantidad`) VALUES
-(37, 'Coca Cola', 60, '', 20),
-(38, 'Pepsi', 45, '', 50),
-(39, 'Sprite', 55, '', 5),
-(40, '7UP', 22, '', 43),
-(43, 'Fanta', 20, '', 44),
-(44, 'Coca Zero', 150, '', 10),
-(46, 'Cerveza Quilmes', 33, '', 50),
-(47, 'Cerveza Budwiser', 10, '', 70);
+(1, 'Puchos', 50, '', 1),
+(3, 'Prueba', 10, '', 2),
+(4, 'Prueba', 10, '', 2),
+(5, 'Prueba3', 100, '', 20),
+(6, 'Prueba3', 100, '', 20),
+(10, 'a', 40, '', 10);
 
 -- --------------------------------------------------------
 
@@ -69,8 +67,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `password`, `mail`, `tipo`, `foto`) VALUES
 (1, 'Guillo', '123', 'g@g.com', 'admin', ''),
-(3, 'Admin', 'administrador', 'admin@admin.com', 'admin', ''),
-(4, 'User', 'usuario', 'user@user.com', 'user', '');
+(2, 'Jorge', '123', 'j@j.com', 'user', '');
 
 --
 -- Índices para tablas volcadas
@@ -96,12 +93,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

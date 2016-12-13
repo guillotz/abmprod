@@ -13,12 +13,17 @@ require_once 'Clases/usuario.php';
 require_once 'Clases/AccesoDatos.php';
 
 $prods = Productos::TraerProductos();
-echo "Bienvenido: ".$_SESSION["user"]["nombre"]."<br>";
-echo '<a href="nexoadministrador.php?CERRAR">CERRAR SESION</a>';
+$usuarios = Usuario::TraerUsuarios();
+
+Usuario::MostrarUsuario($_SESSION["user"]["nombre"],$_SESSION["user"]["tipo"]);
+//echo "Bienvenido: ".$_SESSION["user"]["nombre"]."<br>";
+//echo '<a href="nexoadministrador.php?CERRAR">CERRAR SESION</a>';
 if ($_SESSION["user"]["tipo"] == "admin")
 {	
 	echo Productos::AltaProductoForm();
-	echo Productos::CargarTablaAdmin($prods);
+	echo Productos::FormatoMenuAdmin($prods,$usuarios);
+	//echo Usuario::CargarTablaUsuarios($usuarios);
+	//echo Productos::CargarTablaAdmin($prods);
 }
 elseif($_SESSION["user"]["tipo"]=="user")
 {
